@@ -48,7 +48,7 @@ public class Main implements IXposedHookLoadPackage {
                 String versionName = context.getPackageManager().getPackageInfo(lpparam.packageName, 0).versionName;
                 log("Found wechat version:" + versionName);
                 wechatVersion = versionName;
-                VersionParam.init(versionName);//yes
+                VersionParam.init(versionName);
             }
             findAndHookMethod("com.tencent.mm.ui.LauncherUI", lpparam.classLoader, "onCreate", Bundle.class, new XC_MethodHook() {
                 @Override
