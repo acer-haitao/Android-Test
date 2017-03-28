@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\Android-Pro\Haitao\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="910f53fabceb0c760ed8e210d926a9c61d76c773">
+        <dex dex="D:\Android-Pro\Haitao\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_43d759a089ed576f638c053e8ad94cf09e842c7d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\software-haitao\Adroid-SDK\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
+        <dex dex="D:\Android-Pro\Haitao\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_3e6277a46b16dd9df461570d13e4adc24b88bfa2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android-Pro\Haitao\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b1c08d5fef724e09b4b90fb2f7e4429edd6129d9">
+        <dex dex="D:\Android-Pro\Haitao\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_8f6e612af86e6ef36f7beaa683965e8656c38790\classes.dex" />
+    </item>
+
+</items>

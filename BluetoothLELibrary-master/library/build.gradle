@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.3"
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 24
+        versionCode 30
+        versionName "1.7.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:support-v4:24.2.1'
+}
+//添加
+publish {
+    userOrg = 'qindachang'
+    groupId = 'com.qindachang'
+    artifactId = 'BluetoothLELibrary'
+    publishVersion = '0.7.0'
+    desc = 'Android Bluetooth LE library'
+    website = 'https://github.com/qindachang/BluetoothLELibrary'
+}

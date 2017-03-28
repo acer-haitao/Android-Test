@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="D:\Android-Pro\BluetoothScoketTest1\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="939d3ad09dee5250a4212eb6ae1d461907227bba">
+        <dex dex="D:\Android-Pro\BluetoothScoketTest1\app\build\intermediates\pre-dexed\debug\instant-run_fe459161b6a174d0c00828a19d49530b49107fa4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\software-haitao\Adroid-SDK\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
+        <dex dex="D:\Android-Pro\BluetoothScoketTest1\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0_3e6277a46b16dd9df461570d13e4adc24b88bfa2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android-Pro\BluetoothScoketTest1\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="532ec597f9bed4f7199ff18474b1802d8d4df8f2">
+        <dex dex="D:\Android-Pro\BluetoothScoketTest1\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_e378a53ca471e997c72e9c49b8bff1b38a84dc84.jar" />
+    </item>
+
+</items>

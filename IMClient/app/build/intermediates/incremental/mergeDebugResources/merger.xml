@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main$Generated" generated="true"><source path="D:\Android-Pro\IMClient\app\src\main\res"/><source path="D:\Android-Pro\IMClient\app\build\generated\res\rs\debug"/><source path="D:\Android-Pro\IMClient\app\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug$Generated" generated="true"><source path="D:\Android-Pro\IMClient\app\src\debug\res"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="D:\Android-Pro\IMClient\app\src\main\res"><file name="ic_launcher" path="D:\Android-Pro\IMClient\app\src\main\res\drawable-ldpi\ic_launcher.png" qualifiers="ldpi-v4" type="drawable"/><file name="ic_action_search" path="D:\Android-Pro\IMClient\app\src\main\res\drawable-mdpi\ic_action_search.png" qualifiers="mdpi-v4" type="drawable"/><file name="ic_launcher" path="D:\Android-Pro\IMClient\app\src\main\res\drawable-mdpi\ic_launcher.png" qualifiers="mdpi-v4" type="drawable"/><file name="ic_action_search" path="D:\Android-Pro\IMClient\app\src\main\res\drawable-xhdpi\ic_action_search.png" qualifiers="xhdpi-v4" type="drawable"/><file name="ic_launcher" path="D:\Android-Pro\IMClient\app\src\main\res\drawable-xhdpi\ic_launcher.png" qualifiers="xhdpi-v4" type="drawable"/><file name="list_item_left" path="D:\Android-Pro\IMClient\app\src\main\res\layout\list_item_left.xml" qualifiers="" type="layout"/><file name="list_item_right" path="D:\Android-Pro\IMClient\app\src\main\res\layout\list_item_right.xml" qualifiers="" type="layout"/><file name="main" path="D:\Android-Pro\IMClient\app\src\main\res\layout\main.xml" qualifiers="" type="layout"/><file name="setting" path="D:\Android-Pro\IMClient\app\src\main\res\layout\setting.xml" qualifiers="" type="layout"/><file name="menu" path="D:\Android-Pro\IMClient\app\src\main\res\menu\menu.xml" qualifiers="" type="menu"/><file path="D:\Android-Pro\IMClient\app\src\main\res\values\dimens.xml" qualifiers=""><dimen name="padding_large">16dp</dimen><dimen name="padding_medium">8dp</dimen><dimen name="padding_small">8dp</dimen></file><file path="D:\Android-Pro\IMClient\app\src\main\res\values\strings.xml" qualifiers=""><string name="hello_world">Hello world!</string><string name="hint_ip">server ip:</string><string name="menu_settings">setting server</string><string name="commit">commit</string><string name="app_name">IMClient</string><string name="hint_port">server port:</string><string name="setting_server">server setting</string><string name="menu_connect">connect server</string></file><file path="D:\Android-Pro\IMClient\app\src\main\res\values\styles.xml" qualifiers=""><style name="chat_text_date_style">
+	    <item name="android:padding">2dp</item>    
+		<item name="android:textColor">#ffffff</item>   
+		<item name="android:textSize">12sp</item>      
+		<item name="android:background">#bfbfbf</item> 
+	</style><style name="AppTheme" parent="android:Theme.Light"/><style name="chat_text_name_style">  
+		<item name="android:textColor">#818181</item>   
+		<item name="android:textSize">15sp</item>      
+		<item name="android:gravity">center</item> 
+	</style><style name="chat_content_date_style">
+	    <item name="android:minHeight">50dp</item>
+	    <item name="android:gravity">left|center</item>    
+		<item name="android:textColor">#000000</item>   
+		<item name="android:textSize">15sp</item>      
+		<item name="android:lineSpacingExtra">2dp</item>   
+		<item name="android:clickable">true</item>   
+		<item name="android:focusable">true</item>   
+		<item name="android:background">#bfbfbf</item> 
+	</style></file><file path="D:\Android-Pro\IMClient\app\src\main\res\values-large\dimens.xml" qualifiers="large-v4"><dimen name="padding_medium">16dp</dimen><dimen name="padding_large">16dp</dimen><dimen name="padding_small">8dp</dimen></file></source><source path="D:\Android-Pro\IMClient\app\build\generated\res\rs\debug"/><source path="D:\Android-Pro\IMClient\app\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="D:\Android-Pro\IMClient\app\src\debug\res"/></dataSet><mergedItems/></merger>

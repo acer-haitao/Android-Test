@@ -1,0 +1,36 @@
+#Internal package file, do not edit.
+#Wed Jan 11 17:11:15 CST 2017
+2.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+5.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\raw\\button20.wav
+5.set=ANDROID_RESOURCE
+3.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+6.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_main.xml
+2.set=ANDROID_RESOURCE
+10.set=ANDROID_RESOURCE
+10.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\raw\\send.wav
+4.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+7.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-mdpi-v4\\ic_launcher.png
+7.set=ANDROID_RESOURCE
+count=11
+0.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\bodor.xml
+5.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+8.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\menu\\activity_main.xml
+4.set=ANDROID_RESOURCE
+6.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+1.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\raw\\button44.wav
+9.set=ANDROID_RESOURCE
+9.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-mdpi-v4\\ic_action_search.png
+10.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+1.set=ANDROID_RESOURCE
+7.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+2.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\raw\\ping_short.mp3
+6.set=ANDROID_RESOURCE
+0.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+8.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+3.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\AndroidManifest.xml
+3.set=ANDROID_RESOURCE
+1.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+9.base=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_
+4.file=D\:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\resources-debug.ap_\\resources.arsc
+8.set=ANDROID_RESOURCE
+0.set=ANDROID_RESOURCE

@@ -1,0 +1,7 @@
+#Fri Jan 20 11:36:47 CST 2017
+base.0=D\:\\Android-Pro\\Haitao\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_43d759a089ed576f638c053e8ad94cf09e842c7d
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=D\:\\Android-Pro\\Haitao\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_8f6e612af86e6ef36f7beaa683965e8656c38790\\classes.dex
+base.1=D\:\\Android-Pro\\Haitao\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_8f6e612af86e6ef36f7beaa683965e8656c38790
+file.0=D\:\\Android-Pro\\Haitao\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_43d759a089ed576f638c053e8ad94cf09e842c7d\\classes.dex

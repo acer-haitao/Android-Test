@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\merged\\debug\\raw\\button44.wav",
+        "source": "D:\\Android-Pro\\BluetoothScoketTest1\\app\\src\\main\\res\\raw\\button44.wav"
+    },
+    {
+        "merged": "D:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\merged\\debug\\raw\\ping_short.mp3",
+        "source": "D:\\Android-Pro\\BluetoothScoketTest1\\app\\src\\main\\res\\raw\\ping_short.mp3"
+    },
+    {
+        "merged": "D:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\merged\\debug\\raw\\button20.wav",
+        "source": "D:\\Android-Pro\\BluetoothScoketTest1\\app\\src\\main\\res\\raw\\button20.wav"
+    },
+    {
+        "merged": "D:\\Android-Pro\\BluetoothScoketTest1\\app\\build\\intermediates\\res\\merged\\debug\\raw\\send.wav",
+        "source": "D:\\Android-Pro\\BluetoothScoketTest1\\app\\src\\main\\res\\raw\\send.wav"
+    }
+]

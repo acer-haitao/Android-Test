@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Android-Pro\\IMClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_right.xml",
+        "source": "D:\\Android-Pro\\IMClient\\app\\src\\main\\res\\layout\\list_item_right.xml"
+    },
+    {
+        "merged": "D:\\Android-Pro\\IMClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "D:\\Android-Pro\\IMClient\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "D:\\Android-Pro\\IMClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_left.xml",
+        "source": "D:\\Android-Pro\\IMClient\\app\\src\\main\\res\\layout\\list_item_left.xml"
+    },
+    {
+        "merged": "D:\\Android-Pro\\IMClient\\app\\build\\intermediates\\res\\merged\\debug\\layout\\setting.xml",
+        "source": "D:\\Android-Pro\\IMClient\\app\\src\\main\\res\\layout\\setting.xml"
+    }
+]
