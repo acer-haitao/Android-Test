@@ -12,40 +12,44 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Runnable {
 
 
-    private EditText edt_ip, edt_port, edt_getMsg;
-    private Button bt_connect, bt_close, bt_send;
-    private TextView text_show;
-    private int port, connect_flag = 0;
-    private String ip = "";
-    private String time = "";
-    private String sendMsg;
-    private int recvMsg;
+    private EditText edt_ip, edt_port, edt_getMsg;//IP port 发送输入
+    private Button bt_connect, bt_close, bt_send;//连接、断开、发送按钮
+    private TextView text_show;//显示TextView
+
+    private int port, connect_flag = 0;//连接成功标志位
+    private String ip = "";//存储获取输入的IP
+
+    private String time = "";// 获取系统当前时间
+    private String localip;//获取本地IP
+
     private Socket socket = null;
-    private String localip;
+
     private PrintWriter pw;//send
-    //private BufferedReader in;
-   // private InputStream in;
-   // private Scanner in;
-    private BufferedReader in = null;
-    private String content = "";
-    private StringBuffer sb = null;
+    private String sendMsg;//获取发送的信息
+    //private DataOutputStream write;
 
+    private Scanner in;
+    private String content = "";//用于接收数据
+    private StringBuffer sb = null;//缓存接收的数据
 
+    /**
+     * 处理UI界面更新
+     */
     public Handler handler = new Handler() {
 
         @Override
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         sb = new StringBuffer();
         init_findView();  //findviewByID
-        text_show.setText("fahdslkjhafkljfhalkf");
+        text_show.setText("");
     }
 
     //处理点击事件
@@ -95,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     close_socket();
                 } catch (Exception e) {
-                    e.printStackTrace();
+			e.printStackTrace();
                 }
                 break;
             case R.id.sendButton:
@@ -135,7 +139,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_close = (Button) findViewById(R.id.colse);//断开
         bt_send = (Button) findViewById(R.id.sendButton);//获取发送
 
-
         bt_connect.setOnClickListener(this);
         bt_close.setOnClickListener(this);
         bt_send.setOnClickListener(this);
@@ -159,16 +162,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * send
+     * send发送消息
      */
     private void sendMsg() {
         sendMsg = edt_getMsg.getText().toString();
-        pw.write("From:" + sendMsg);
-        pw.flush();
+        try {
+            pw.write("From:" + sendMsg);
+            pw.flush();
+            //write.writeUTF(sendMsg);
+            //write.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
-     * recv
+     * recv接收服务器消息
      */
 
     @Override
@@ -179,13 +188,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (!socket.isInputShutdown()) {
                     try {
                         Log.i("Test","isInputShutDown");
-                        /*
                        if ((content = in.nextLine()) != null) {
                             Log.i("Test",content);
                             content += "\n";
-                          // text_show.setText(content);
+                          // text_show.setText(content); //线程里不能更新UI
                             handler.sendEmptyMessage(0x123);
-                        } */
+                        }
+                        /*
                         if ((content = in.readLine()) != null) {
                             Log.i("Test",content);
                             content += "\n";
@@ -193,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             handler.sendEmptyMessage(0x123);
 
                         }
-
+                        */
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -223,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void connectServer(String ip, int port) throws IOException {
         //1 创建socket对象， 指定服务器IP +　Port
         try {
-            socket = new Socket("192.168.4.197", 6800);
+            socket = new Socket("192.168.4.234", 6800);
         } catch (Exception e) {
             Log.d("connect", time + "TCP连接失败");
             e.printStackTrace();
@@ -231,41 +240,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (socket.isConnected()) {
             getTime();
             connect_flag = 1;
+           // text_show.setText(time + "TCP连接成功");//此处更显界面socke异常停止
 
             /*
             Looper.prepare();
-            Toast.makeText(this, time + "TCP连接成功", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, time + "TCP连接成功", Toast.LENGTH_LONG).show();//线程里开对话框显示有问题
             Looper.loop();
             */
             Log.d("connect", time + "连接成功");
-            pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(
-                    socket.getOutputStream())), true);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
-            //InputStream instream = socket.getInputStream();
-           // in = new Scanner(instream);
 
-            new Thread(MainActivity.this).start();
+            pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+           // write = new DataOutputStream(socket.getOutputStream());
+
+           // in = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
+            InputStream instream = socket.getInputStream();
+            in = new Scanner(instream);
+
+            //4 获取服务器响应信息
+            new Thread(MainActivity.this).start();//启动接收服务器消息的线程
         } else {
+            text_show.setText(time + "TCP连接失败");
             Log.d("connect", time + "TCP连接失败");
         }
-
-
-        //2 获取输出流，向服务器发送信息
-
         //3 获取客户端IP地址
         getTime();
         getIP();
-
+        //2 获取输出流，向服务器发送信息
         pw.write("From:" + time + " " + localip + " :TCP is Connected!");
         pw.flush();
-
-        //4 获取服务器响应信息
-
+       // write.writeUTF("From:" + time + " " + localip + " :TCP is Connected!");
+      //  write.flush();
         //5 关闭输出流
         //socket.shutdownOutput();
         //socket.close();
     }
-
-
 }
 
