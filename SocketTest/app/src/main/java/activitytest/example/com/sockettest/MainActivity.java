@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean running;//循环接收标志位
     private Handler myHandler;//刷新UI线程
 
+    private static final String formatUTF = "GBK";//编码格式
+
 
 
     /*onCreate一般用来加载布局用的*/
@@ -124,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 获取系统时间
      */
     private void getTime() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         time = format.format(new Date());
         Log.e("msg", time);
     }
@@ -181,11 +183,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 socket = new Socket(ip, port);//连接服务器
                 if (socket.isConnected()) {
                     //打开输入流
-                    InputStream instream = socket.getInputStream();
-                    in = new Scanner(instream);
+                   // InputStream instream = socket.getInputStream();
+                    in = new Scanner(socket.getInputStream(),formatUTF);
 
                     //打开输出流
-                    pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+                    pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(),formatUTF)), true);
 
                     //开启接收线程
                     running = true;
@@ -266,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                    break;
                case 1:
                    String str = (String) msg.obj;
-                   text_show.setText(recvMsg);
+                   text_show.setText(str);
                    break;
                case 2:
                    getTime();
