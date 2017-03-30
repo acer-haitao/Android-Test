@@ -24,11 +24,11 @@ import java.util.Date;
 import java.util.Scanner;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, Runnable {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private EditText edt_ip, edt_port, edt_getMsg;//IP port 发送输入
-    private Button bt_connect, bt_close, bt_send;//连接、断开、发送按钮
+    private Button bt_connect, bt_close, bt_send, bt_show;//连接、断开、发送按钮
     private TextView text_show;//显示TextView
 
     private int port, connect_flag = 0;//连接成功标志位
@@ -40,35 +40,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Socket socket = null;
 
     private PrintWriter pw;//send
-    private String sendMsg;//获取发送的信息
+    private String sendMsg, recvMsg;//获取发送的信息
     //private DataOutputStream write;
 
     private Scanner in;
     private String content = "";//用于接收数据
     private StringBuffer sb = null;//缓存接收的数据
 
-    /**
-     * 处理UI界面更新
-     */
-    public Handler handler = new Handler() {
+    private boolean running;//循环接收标志位
+    private Handler myHandler;//刷新UI线程
 
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 0x123) {
-                sb.append(content);
-                text_show.setText(sb.toString());
-            }
-        }
-    };
+
 
     /*onCreate一般用来加载布局用的*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sb = new StringBuffer();
         init_findView();  //findviewByID
-        text_show.setText("");
+        myHandler = new MyHandler();
     }
 
     //处理点击事件
@@ -76,30 +66,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.connet:
-                if (connect_flag == 0) {
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            try {
-                                get_ip_port(); // 处理输入ip和端口号
-                                connectServer(ip, port); //开启线程开始连接服务器
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }.start();
-
-                } else {
-                    //bug
-                    Toast.makeText(this, "TCP已连接成功", Toast.LENGTH_LONG).show();
-                }
+                new StartThread().start();
                 break;
             case R.id.colse:
                 //线程怎么关闭
+                running = false;
                 try {
-                    close_socket();
-                } catch (Exception e) {
-			e.printStackTrace();
+                    socket.close();
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
                 }
                 break;
             case R.id.sendButton:
@@ -148,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 获取系统时间
      */
     private void getTime() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");
         time = format.format(new Date());
         Log.e("msg", time);
     }
@@ -162,117 +138,161 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * send发送消息
+     * 发送信息
      */
-    private void sendMsg() {
-        sendMsg = edt_getMsg.getText().toString();
+    private void sendMsg()
+    {
+        sendMsg = edt_getMsg.getText().toString();//从输入框获取消息内容
         try {
-            pw.write("From:" + sendMsg);
+            pw.write(sendMsg);
             pw.flush();
-            //write.writeUTF(sendMsg);
-            //write.flush();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     /**
-     * recv接收服务器消息
+     * 向服务器发送连接信息
      */
-
-    @Override
-    public void run() {
-        Log.i("Test","run");
-        while (true) {
-            if (socket != null && socket.isConnected()) {
-                if (!socket.isInputShutdown()) {
-                    try {
-                        Log.i("Test","isInputShutDown");
-                       if ((content = in.nextLine()) != null) {
-                            Log.i("Test",content);
-                            content += "\n";
-                          // text_show.setText(content); //线程里不能更新UI
-                            handler.sendEmptyMessage(0x123);
-                        }
-                        /*
-                        if ((content = in.readLine()) != null) {
-                            Log.i("Test",content);
-                            content += "\n";
-                          // text_show.setText(content);
-                            handler.sendEmptyMessage(0x123);
-
-                        }
-                        */
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+    private void CntToServer()
+    {
+        try {
+            getIP();
+            getTime();
+            pw.write(time + "--From--" + localip + "-->TCP is connected!");
+            pw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
 
-    /**
-     * 关闭socket
-     */
-    private void close_socket() throws IOException {
-        socket.close();
-        connect_flag = 0;
-        getTime();
-        Toast.makeText(this, time + " TCP正在断开连接", Toast.LENGTH_SHORT).show();
-        Log.d("connect", "TCP断开连接");
     }
 
     /**
      * 连接服务器
-     *
-     * @param ip
-     * @param port
      * @throws IOException
      */
-    private void connectServer(String ip, int port) throws IOException {
-        //1 创建socket对象， 指定服务器IP +　Port
-        try {
-            socket = new Socket("192.168.4.234", 6800);
-        } catch (Exception e) {
-            Log.d("connect", time + "TCP连接失败");
-            e.printStackTrace();
+    private class StartThread extends Thread {
+
+        @Override
+        public void run() {
+            try {
+                get_ip_port();//获取输入的IP、端口号
+                socket = new Socket(ip, port);//连接服务器
+                if (socket.isConnected()) {
+                    //打开输入流
+                    InputStream instream = socket.getInputStream();
+                    in = new Scanner(instream);
+
+                    //打开输出流
+                    pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+
+                    //开启接收线程
+                    running = true;
+                    new RecvThread(socket).start();
+
+                    //状态设置
+                    Message msg0 = myHandler.obtainMessage();//实例化对象
+                    msg0.what=0;
+                    myHandler.sendMessage(msg0);
+
+                    //向服务器发送连接信息
+                    CntToServer();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        if (socket.isConnected()) {
-            getTime();
-            connect_flag = 1;
-           // text_show.setText(time + "TCP连接成功");//此处更显界面socke异常停止
+    }
 
-            /*
-            Looper.prepare();
-            Toast.makeText(this, time + "TCP连接成功", Toast.LENGTH_LONG).show();//线程里开对话框显示有问题
-            Looper.loop();
-            */
-            Log.d("connect", time + "连接成功");
+    private class RecvThread extends Thread {
+        private InputStream inputStream;
 
-            pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-           // write = new DataOutputStream(socket.getOutputStream());
-
-           // in = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
-            InputStream instream = socket.getInputStream();
-            in = new Scanner(instream);
-
-            //4 获取服务器响应信息
-            new Thread(MainActivity.this).start();//启动接收服务器消息的线程
-        } else {
-            text_show.setText(time + "TCP连接失败");
-            Log.d("connect", time + "TCP连接失败");
+        public RecvThread(Socket socket) throws IOException {
+            inputStream = socket.getInputStream();
         }
-        //3 获取客户端IP地址
-        getTime();
-        getIP();
-        //2 获取输出流，向服务器发送信息
-        pw.write("From:" + time + " " + localip + " :TCP is Connected!");
-        pw.flush();
-       // write.writeUTF("From:" + time + " " + localip + " :TCP is Connected!");
-      //  write.flush();
-        //5 关闭输出流
-        //socket.shutdownOutput();
-        //socket.close();
+
+        @Override
+        public void run() {
+            while (running) {
+                try {
+                    if ((recvMsg = in.nextLine()) != null) {
+                        recvMsg += "\n";
+                    }
+                } catch (Exception e) {
+                    running = false;//防止服务器断开连接导致程序异常
+
+                    Message recvNullMsg = myHandler.obtainMessage();
+                    recvNullMsg.what = 2;
+                    myHandler.sendMessage(recvNullMsg);//发送信息通知客户端已关闭
+                    e.printStackTrace();
+                    //设置按钮状态
+                    // setButtonFlag(true,bt_connect);//非UI线程不能操作UI会报错
+                    break;
+                }
+
+                //把消息发送到主线程
+                Message sendToMain = myHandler.obtainMessage();
+                sendToMain.what = 1;
+                sendToMain.obj = recvMsg;//将接收到的信息传递给sendMain
+                myHandler.sendMessage(sendToMain);//发送给Handler更新
+
+                try {
+                    sleep(400);
+                }catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+
+            Message recvNullMsg = myHandler.obtainMessage();
+            recvNullMsg.what = 2;
+            myHandler.sendMessage(recvNullMsg);//发送信息通知客户端已关闭
+        }
+    }
+
+    class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+           switch (msg.what)
+           {
+               case 0:
+                   getTime();
+                   toastShow(time + ":TCP连接成功");
+                   text_show.setText(time +"-->TCP连接成功");
+                   //设置按钮状态为不能点击
+                   setButtonFlag(true,bt_connect);
+                   break;
+               case 1:
+                   String str = (String) msg.obj;
+                   text_show.setText(recvMsg);
+                   break;
+               case 2:
+                   getTime();
+                   toastShow(time+":已断开连接");
+                   text_show.setText(time+":服务器已断开连接");
+                   setButtonFlag(false,bt_connect);
+                   break;
+               default:
+                   break;
+           }
+        }
+    }
+
+    /**
+     * 设置按钮的状态
+     */
+    private void setButtonFlag(boolean flag, Button bt_show) {
+        bt_show.setEnabled(!flag);
+    }
+
+    /**
+     * 提示连接状态
+     * @param s
+     */
+    private void toastShow(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 }
 

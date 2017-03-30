@@ -106,9 +106,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="#000000"
-            android:textSize="10dp"
+            android:textSize="16dp"
             android:textStyle="normal"
-            android:hint="信息接收区"/>
+            android:hint="请输入服务器IP、端口号，点击连接按钮开始连接"/>
     </LinearLayout>
     <!--添加分割线-->
     <View
