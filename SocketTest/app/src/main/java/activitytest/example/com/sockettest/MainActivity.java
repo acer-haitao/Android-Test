@@ -1,6 +1,8 @@
 package activitytest.example.com.sockettest;
 
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,13 +26,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import static activitytest.example.com.sockettest.R.id.paswd;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private EditText edt_ip, edt_port, edt_getMsg;//IP port 发送输入
-    private Button bt_connect, bt_close, bt_send, bt_show;//连接、断开、发送按钮
+    private EditText edt_ip, edt_port, edt_getMsg;//IP port 发送输入控件
+    private Button bt_connect, bt_close, bt_send, bt_show, showdata;//连接、断开、发送按钮
     private TextView text_show;//显示TextView
+    private CheckBox paswd_check;
+
 
     private int port, connect_flag = 0;//连接成功标志位
     private String ip = "";//存储获取输入的IP
@@ -44,13 +51,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //private DataOutputStream write;
 
     private Scanner in;
-    private String content = "";//用于接收数据
     private StringBuffer sb = null;//缓存接收的数据
 
     private boolean running;//循环接收标志位
     private Handler myHandler;//刷新UI线程
 
     private static final String formatUTF = "GBK";//编码格式
+
+    private SharedPreferences save_ip_port;//保存IP
+    private String save_ip;
+    private String save_port;
+    private boolean save_flag;
+    private SharedPreferences.Editor editor;
 
 
 
@@ -61,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         init_findView();  //findviewByID
         myHandler = new MyHandler();
+        save_ip_port();
+
+
     }
 
     //处理点击事件
@@ -83,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.sendButton:
                 sendMsg();
                 break;
+            case R.id.showdata:
+                Intent i = new Intent(MainActivity.this, ContrlActivity.class);
+                startActivity(i);
             default:
                 break;
         }
@@ -101,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         //IP
         ip = edt_ip.getText().toString();
-        Log.i("IP", ip);
+        Log.d("IP", ip);
     }
 
     /**
@@ -116,10 +134,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_connect = (Button) findViewById(R.id.connet);//连接
         bt_close = (Button) findViewById(R.id.colse);//断开
         bt_send = (Button) findViewById(R.id.sendButton);//获取发送
+        showdata = (Button)findViewById(R.id.showdata);//显示网页温度
+        paswd_check = (CheckBox)findViewById(paswd);
+
+
 
         bt_connect.setOnClickListener(this);
         bt_close.setOnClickListener(this);
         bt_send.setOnClickListener(this);
+    }
+
+    /**
+     * 保存IP地址和端口号
+     */
+    private void save_ip_port()
+    {
+        save_ip_port = getSharedPreferences("init",MODE_PRIVATE);
+        editor = save_ip_port.edit();
+        save_ip = save_ip_port.getString("save_ip",null);
+        save_port = save_ip_port.getString("save_port",null);
+        save_flag = save_ip_port.getBoolean("save_flag",false);
+
+        if (save_flag) {
+            edt_ip.setText(save_ip);
+            edt_port.setText(save_port);
+            paswd_check.setChecked(true);
+        }
     }
 
     /**
@@ -128,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void getTime() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         time = format.format(new Date());
-        Log.e("msg", time);
+        Log.d("msg", time);
     }
 
     /**
@@ -151,7 +191,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -167,7 +206,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -193,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     running = true;
                     new RecvThread(socket).start();
 
-                    //状态设置
+                    //发送连接成功的状态设置
                     Message msg0 = myHandler.obtainMessage();//实例化对象
                     msg0.what=0;
                     myHandler.sendMessage(msg0);
@@ -207,6 +245,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 接收数据线程
+     */
     private class RecvThread extends Thread {
         private InputStream inputStream;
 
@@ -248,6 +289,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
 
+            //如果没有进入while循环
             Message recvNullMsg = myHandler.obtainMessage();
             recvNullMsg.what = 2;
             myHandler.sendMessage(recvNullMsg);//发送信息通知客户端已关闭
@@ -295,6 +337,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void toastShow(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //记住密码
+        if (paswd_check.isChecked()) {
+            editor.putString("save_ip",edt_ip.getText().toString());
+            editor.putString("save_port",edt_port.getText().toString());
+            editor.putBoolean("save_flag",true);
+            editor.commit();
+        }
+        else
+        {
+            editor.clear();
+            editor.commit();
+        }
+
     }
 }
 
