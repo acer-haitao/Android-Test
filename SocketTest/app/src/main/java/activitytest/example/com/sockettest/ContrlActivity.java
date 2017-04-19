@@ -13,9 +13,9 @@ public class ContrlActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contrl);
         //显示网页
-        webView = (WebView) findViewById(R.id.webTest);
+        webView = (WebView) findViewById(R.id.webconctrl);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://yuhaitao.iok.la/env1.html");
+        webView.loadUrl("http://yuhaitao.iok.la/HT-Test.html");
     }
 }

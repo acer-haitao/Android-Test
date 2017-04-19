@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private EditText edt_ip, edt_port, edt_getMsg;//IP port 发送输入控件
-    private Button bt_connect, bt_close, bt_send, bt_show, showdata;//连接、断开、发送按钮
+    private Button bt_connect, bt_close, bt_send, bt_show, showdata, ctlbtn;//连接、断开、发送按钮
     private TextView text_show;//显示TextView
     private CheckBox paswd_check;
 
@@ -98,9 +98,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.sendButton:
                 sendMsg();
                 break;
-            case R.id.showdata:
+            case R.id.conctrl:
                 Intent i = new Intent(MainActivity.this, ContrlActivity.class);
                 startActivity(i);
+                break;
+            case R.id.showdata:
+                Intent test = new Intent(MainActivity.this, ShowDataActivity.class);
+                startActivity(test);
+                break;
             default:
                 break;
         }
@@ -135,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_close = (Button) findViewById(R.id.colse);//断开
         bt_send = (Button) findViewById(R.id.sendButton);//获取发送
         showdata = (Button)findViewById(R.id.showdata);//显示网页温度
+        ctlbtn = (Button)findViewById(R.id.conctrl);//显示网页温度
         paswd_check = (CheckBox)findViewById(paswd);
 
 
@@ -142,6 +148,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_connect.setOnClickListener(this);
         bt_close.setOnClickListener(this);
         bt_send.setOnClickListener(this);
+        showdata.setOnClickListener(this);
+        ctlbtn.setOnClickListener(this);
     }
 
     /**
