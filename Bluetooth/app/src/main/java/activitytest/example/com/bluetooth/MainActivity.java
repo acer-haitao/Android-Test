@@ -88,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     textview3.append("\n" + device.getName() + "==>" + device.getAddress() + "\n");
                 }
-            } else if(action.equals(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)){
+            }
+            else if(action.equals(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)){
 
                     textview1.append("搜索完成");
             }

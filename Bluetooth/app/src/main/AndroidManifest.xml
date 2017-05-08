@@ -20,7 +20,6 @@
         </activity>
         <activity android:name=".MainAutoActivity"></activity>
 
-
     </application>
 
 

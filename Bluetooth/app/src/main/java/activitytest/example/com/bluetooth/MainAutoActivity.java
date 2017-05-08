@@ -32,7 +32,7 @@ public class MainAutoActivity extends AppCompatActivity implements View.OnClickL
     private OutputStream outputStream = null;
     private InputStream inputStream = null;
 
-    private static final UUID MY_UUID = UUID.fromString("5593a270-4b9b-4353-aead-0e1b6ac99a28");
+    private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static  String address = "64:A6:51:EA:56:AC";//要连接蓝牙的MAC地址
 
     private ReceiveThread rThread = null;
@@ -60,7 +60,7 @@ public class MainAutoActivity extends AppCompatActivity implements View.OnClickL
         txt21 = (TextView)findViewById(R.id.textView21);//当前没有连接任何设备
         txt22 = (TextView)findViewById(R.id.textView22);//接收数据
 
-        editText21 = (EditText)findViewById(R.id.editText21);
+        editText21 = (EditText)findViewById(R.id.editText21);//输入
 
 
         btn21.setOnClickListener(this);
@@ -206,14 +206,17 @@ public class MainAutoActivity extends AppCompatActivity implements View.OnClickL
      //连接蓝牙设备的异步操作
      class ConnectTask extends AsyncTask<String,String,String>
      {
-
          @Override
          protected String doInBackground(String... params) {
+
+             Log.e("test", "Connect");
              BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(params[0]);
-             try {
-                 btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
+             Log.e("error", "ON RESUME: BT connection established, data transfer link open.");
+             try{
+
+                 btSocket  =(BluetoothSocket) device.getClass().getMethod("createRfcommSocket", new Class[] {int.class}).invoke(device,1);
                  btSocket.connect();
-                 Log.e("error", "ON RESUME: BT connection established, data transfer link open.");
+
              } catch (Exception e) {
                  try {
                      btSocket.close();
@@ -230,7 +233,7 @@ public class MainAutoActivity extends AppCompatActivity implements View.OnClickL
                  outputStream = btSocket.getOutputStream();
              } catch (Exception e) {
                  Log.e("error", "ON RESUME: Output stream creation failed.", e);
-                 return "Socket 流创建失败";
+                 return "Socket流创建失败";
              }
              return "蓝牙连接正常,Socket 创建成功";
          }
@@ -241,7 +244,6 @@ public class MainAutoActivity extends AppCompatActivity implements View.OnClickL
              rThread.start();
              txt21.setText(s);
              super.onPostExecute(s);
-
          }
      }
 
