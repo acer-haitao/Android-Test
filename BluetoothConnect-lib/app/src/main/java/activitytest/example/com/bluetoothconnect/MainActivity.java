@@ -15,9 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.inuker.bluetooth.library.BluetoothClient;
+
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private String ReceivData = "";
 
     private MyHandler handler;
+
+    BluetoothClient mclient = new BluetoothClient();
 
 
     @Override
@@ -73,39 +76,13 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         switch (v.getId())
         {
             case R.id.button21://断开
-                if (btSocket != null)
-                {
-                    try {
-                        btSocket.close();
-                        btSocket = null;
-                        if(rThread == null)
-                        {
-                            rThread.join();
-                        }
-                        txt21.setText("当前已断连接");
-                    } catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
-                    catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
+
                 break;
             case R.id.button22://连接
-                if(!mBluetoothAdapter.isEnabled())//判断蓝牙是否打开
-                {
-                    mBluetoothAdapter.enable();
-                }
-                mBluetoothAdapter.startDiscovery();
 
-                //创建连接
-                BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
-                connectTask connect = new connectTask(device);
-                connect.start();
                 break;
             case R.id.button23://发送
-                new SendTask().execute(editText21.getText().toString());
+
                 break;
         }
     }
@@ -251,37 +228,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         }
     }
 
-    /*多线程
-    class connectTask extends Thread{
-        private BluetoothDevice mmDevice;
-        public connectTask (BluetoothDevice device){
-            BluetoothSocket tmp = null;
-            mmDevice = device;
-            try {
-                tmp = device.createRfcommSocketToServiceRecord(MY_UUID);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            btSocket = tmp;
-        }
-        @Override
-        public void run() {
-            mBluetoothAdapter.cancelDiscovery();
-            try {
-                Log.e("test","connect sucess");
-                btSocket.connect();
-                Log.e("test","connect sucess11");
-            } catch (IOException connectException) {
-                try{
-                 btSocket.close();
-                }catch (IOException closeException)
-                {
-                }
-                return;
-            }
-        }
-    }
-    */
     @Override
     protected void onDestroy() {
         super.onDestroy();
