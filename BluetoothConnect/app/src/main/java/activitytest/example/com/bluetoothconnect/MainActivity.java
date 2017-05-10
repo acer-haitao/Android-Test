@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -100,9 +99,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 mBluetoothAdapter.startDiscovery();
 
                 //创建连接
-                BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
-                connectTask connect = new connectTask(device);
-                connect.start();
+
+                new ConnectTask().execute(address);
                 break;
             case R.id.button23://发送
                 new SendTask().execute(editText21.getText().toString());
@@ -213,7 +211,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         protected String doInBackground(String... params) {
 
             /*连接失败*/
-
             Log.e("test", "Connect");
             BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(params[0]);
             Log.e("error", "ON RESUME: BT connection established, data transfer link open.");
