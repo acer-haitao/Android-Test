@@ -1,0 +1,9 @@
+.\uart.o: uart.c
+.\uart.o: D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h
+.\uart.o: D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cm0.h
+.\uart.o: D:\software-haitao\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\uart.o: D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmInstr.h
+.\uart.o: D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmFunc.h
+.\uart.o: D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h
+.\uart.o: D:\software-haitao\Keil5\ARM\ARMCC\Bin\..\include\math.h
+.\uart.o: uart.h
