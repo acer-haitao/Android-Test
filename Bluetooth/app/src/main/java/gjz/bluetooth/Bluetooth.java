@@ -1,13 +1,11 @@
 package gjz.bluetooth;
 
-import gjz.bluetooth.R;
-import gjz.bluetooth.AnimationTabHost;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 import android.widget.TabHost.OnTabChangeListener;
+import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
 public class Bluetooth extends TabActivity {
