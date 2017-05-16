@@ -1,0 +1,61 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.16a
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: haitao Microsoft, Microsoft, LIC=4ZLZ9-46465-5BBEB-2LCKB-VRY72-STXLR
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.16a
+Toolchain Path:  D:\software-haitao\Keil5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 (build 20)
+Assembler:       Armasm.exe V5.06 (build 20)
+Linker/Locator:  ArmLink.exe V5.06 (build 20)
+Library Manager: ArmAr.exe V5.06 (build 20)
+Hex Converter:   FromElf.exe V5.06 (build 20)
+CPU DLL:         SARMCM3.DLL V5.16a
+Dialog DLL:      DARMCM1.DLL V1.12.0.0
+Target DLL:      Segger\JL2CM3.dll V2.99.15.2
+Dialog DLL:      TARMCM1.DLL V1.9.0.0
+ 
+<h2>Project:</h2>
+E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\MagneticDetector.uvprojx
+Project File Date:  05/03/2017
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 (build 20)', folder: 'D:\software-haitao\Keil5\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
+assembling startup_LPC11xx.s...
+compiling gpio.c...
+compiling timer32.c...
+compiling uart.c...
+compiling system_LPC11xx.c...
+compiling WiFi.c...
+WiFi.c(33): warning:  #177-D: variable "j" was declared but never referenced
+    int tmp=-1,i=0,j=0,k=0;
+WiFi.c(33): warning:  #177-D: variable "k" was declared but never referenced
+    int tmp=-1,i=0,j=0,k=0;
+WiFi.c: 2 warnings, 0 errors
+compiling timer16.c...
+compiling Main.cpp...
+Main.cpp(206): warning:  #177-D: variable "AT_Indicator" was declared but never referenced
+  	int tmp_f=0,AT_Indicator=0;	
+Main.cpp(207): warning:  #177-D: variable "TOGGLE_AP2SOCKET" was declared but never referenced
+  	uint8_t TOGGLE_AP2SOCKET=1;																					//when 1, change WiFi mode to STA
+Main.cpp: 2 warnings, 0 errors
+linking...
+Program Size: Code=6064 RO-data=404 RW-data=92 ZI-data=1436  
+FromELF: creating hex file...
+".\MagneticDetector.axf" - 0 Error(s), 4 Warning(s).
+
+<h2>Collection of Component include folders:</h2>
+  E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\RTE
+  D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:12
+</pre>
+</body>
+</html>

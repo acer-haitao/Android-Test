@@ -1,0 +1,101 @@
+Dependencies for Project 'MagneticDetector', Target 'Target 1': (DO NOT MODIFY !)
+F (.\startup_LPC11xx.s)(0x59092BE4)(--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\RTE-I D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-I D:\software-haitao\Keil5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 516"--list .\startup_lpc11xx.lst --xref -o .\startup_lpc11xx.o --depend .\startup_lpc11xx.d)
+F (.\gpio.c)(0x59092BE4)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections-I E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\RTE-I D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-I D:\software-haitao\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="516"-o .\gpio.o --omf_browse .\gpio.crf --depend .\gpio.d)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h)(0x4FF4FDF8)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cm0.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmInstr.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmFunc.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h)(0x4CF35218)
+I (gpio.h)(0x59092BE4)
+F (.\timer32.c)(0x59092BE2)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections-I E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\RTE-I D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-I D:\software-haitao\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="516"-o .\timer32.o --omf_browse .\timer32.crf --depend .\timer32.d)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h)(0x4FF4FDF8)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cm0.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmInstr.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmFunc.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h)(0x4CF35218)
+I (timer32.h)(0x59092BE4)
+I (gpio.h)(0x59092BE4)
+F (.\uart.c)(0x59092BE4)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections-I E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\RTE-I D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-I D:\software-haitao\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="516"-o .\uart.o --omf_browse .\uart.crf --depend .\uart.d)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h)(0x4FF4FDF8)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cm0.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmInstr.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmFunc.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h)(0x4CF35218)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\math.h)(0x55AEF5F2)
+I (uart.h)(0x59092BE2)
+F (.\WiFi.c)(0x59092BE4)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections-I E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\RTE-I D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-I D:\software-haitao\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="516"-o .\wifi.o --omf_browse .\wifi.crf --depend .\wifi.d)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h)(0x4FF4FDF8)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cm0.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmInstr.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmFunc.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h)(0x4CF35218)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\math.h)(0x55AEF5F2)
+I (uart.h)(0x59092BE2)
+I (WiFi.h)(0x59092BE4)
+I (timer32.h)(0x59092BE4)
+I (timer16.h)(0x59092BE4)
+I (gpio.h)(0x59092BE4)
+F (.\Main.cpp)(0x59093BC6)(--cpp -c --cpu Cortex-M0 -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections-I E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\RTE-I D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-I D:\software-haitao\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="516"-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h)(0x4FF4FDF8)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cm0.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmInstr.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmFunc.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h)(0x4CF35218)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\cstdint)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\cstring)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\string.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\cmath)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\math.h)(0x55AEF5F2)
+I (gpio.h)(0x59092BE4)
+I (uart.h)(0x59092BE2)
+I (timer32.h)(0x59092BE4)
+I (timer16.h)(0x59092BE4)
+I (WiFi.h)(0x59092BE4)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\string)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\iosfwd)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_defs.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_config.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\config.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\cwchar)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\wchar.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\limits)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_math.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\cfloat)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\float.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\climits)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\limits.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_algobase.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\utility)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_iterator.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_iterbase.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\cstddef)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\stddef.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_strref.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\memory)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\new)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\exception)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_mutex.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_traits.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\cstdio)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\stdio.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\rw\_error.h)(0x55AEF5F2)
+F (.\system_LPC11xx.c)(0x59092BE4)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections-I E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\RTE-I D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-I D:\software-haitao\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="516"-o .\system_lpc11xx.o --omf_browse .\system_lpc11xx.crf --depend .\system_lpc11xx.d)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h)(0x4FF4FDF8)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cm0.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmInstr.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmFunc.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h)(0x4CF35218)
+F (.\timer16.c)(0x59092BE4)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 -Otime --apcs=interwork --split_sections-I E:\蝶和科技\设备监视器\03-FirmWare\ForHWV0.21\HWV021_Software_watchdog_new_protocol_V0.1\RTE-I D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-I D:\software-haitao\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="516"-o .\timer16.o --omf_browse .\timer16.crf --depend .\timer16.d)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h)(0x4FF4FDF8)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cm0.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmInstr.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmFunc.h)(0x53463974)
+I (D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h)(0x4CF35218)
+I (timer16.h)(0x59092BE4)

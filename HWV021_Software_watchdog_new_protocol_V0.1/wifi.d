@@ -1,0 +1,13 @@
+.\wifi.o: WiFi.c
+.\wifi.o: D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h
+.\wifi.o: D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cm0.h
+.\wifi.o: D:\software-haitao\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\wifi.o: D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmInstr.h
+.\wifi.o: D:\software-haitao\Keil5\ARM\CMSIS\Include\core_cmFunc.h
+.\wifi.o: D:\software-haitao\Keil5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h
+.\wifi.o: D:\software-haitao\Keil5\ARM\ARMCC\Bin\..\include\math.h
+.\wifi.o: uart.h
+.\wifi.o: WiFi.h
+.\wifi.o: timer32.h
+.\wifi.o: timer16.h
+.\wifi.o: gpio.h

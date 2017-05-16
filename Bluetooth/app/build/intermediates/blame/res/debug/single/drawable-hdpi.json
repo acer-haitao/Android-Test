@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\icon.png",
+        "source": "D:\\Android-Pro\\Bluetooth\\app\\src\\main\\res\\drawable-hdpi\\icon.png"
+    },
+    {
+        "merged": "D:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\msgbox_rec.9.png",
+        "source": "D:\\Android-Pro\\Bluetooth\\app\\src\\main\\res\\drawable-hdpi\\msgbox_rec.9.png"
+    },
+    {
+        "merged": "D:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\msgbox_send.9.png",
+        "source": "D:\\Android-Pro\\Bluetooth\\app\\src\\main\\res\\drawable-hdpi\\msgbox_send.9.png"
+    }
+]

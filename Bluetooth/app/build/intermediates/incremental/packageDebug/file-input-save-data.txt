@@ -1,0 +1,33 @@
+#Internal package file, do not edit.
+#Wed May 10 13:48:35 CST 2017
+2.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_
+5.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\devices.xml
+5.set=ANDROID_RESOURCE
+3.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_
+6.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\chat.xml
+2.set=ANDROID_RESOURCE
+4.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_
+7.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\list_item.xml
+7.set=ANDROID_RESOURCE
+count=10
+0.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\main.xml
+5.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_
+8.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\msgbox_rec.9.png
+4.set=ANDROID_RESOURCE
+6.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_
+1.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_\\resources.arsc
+9.set=DEX
+9.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+1.set=ANDROID_RESOURCE
+7.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_
+2.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-mdpi-v4\\icon.png
+6.set=ANDROID_RESOURCE
+0.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_
+8.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_
+3.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\msgbox_send.9.png
+3.set=ANDROID_RESOURCE
+1.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_
+9.base=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+4.file=D\:\\Android-Pro\\Bluetooth\\app\\build\\intermediates\\res\\resources-debug.ap_\\AndroidManifest.xml
+8.set=ANDROID_RESOURCE
+0.set=ANDROID_RESOURCE

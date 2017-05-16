@@ -1,0 +1,13 @@
+--cpu Cortex-M0
+".\startup_lpc11xx.o"
+".\gpio.o"
+".\timer32.o"
+".\uart.o"
+".\wifi.o"
+".\main.o"
+".\system_lpc11xx.o"
+".\timer16.o"
+--library_type=microlib --strict --scatter ".\MagneticDetector.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\MagneticDetector.map" -o .\MagneticDetector.axf

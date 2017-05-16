@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private InputStream inputStream = null;
 
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    private static  String address = "50:A7:2B:F4:4B:DA";//要连接蓝牙的MAC地址
+    private static  String address = "64:A6:51:EA:56:AC";//要连接蓝牙的MAC地址50:A7:2B:F4:4B:DA
 
     private ReceiveThread rThread = null;
     private String ReceivData = "";
@@ -100,6 +99,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 mBluetoothAdapter.startDiscovery();
 
                 //创建连接
+
                 new ConnectTask().execute(address);
                 break;
             case R.id.button23://发送
@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         }
     }
+
     //连接蓝牙设备的异步操作
     class ConnectTask extends AsyncTask<String,String,String>
     {
@@ -210,7 +211,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         protected String doInBackground(String... params) {
 
             /*连接失败*/
-            /*
             Log.e("test", "Connect");
             BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(params[0]);
             Log.e("error", "ON RESUME: BT connection established, data transfer link open.");
@@ -218,7 +218,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
                 btSocket  =(BluetoothSocket) device.getClass().getMethod("createRfcommSocket", new Class[] {int.class}).invoke(device,1);
                 btSocket.connect();
-
             } catch (Exception e) {
                 try {
                     btSocket.close();
@@ -227,16 +226,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                     Log .e("error","ON RESUME: Unable to close socket during connection failure", e2);
                     return "Socket 关闭失败";
                 }
-            }
-            */
-            BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(params[0]);
-            Method m ;
-            try {
-                m = device.getClass().getMethod("createRfcommSocket", new Class[] {int.class});
-
-                btSocket = (BluetoothSocket) m.invoke(device, Integer.valueOf(1));
-            } catch (Exception e) {
-                e.printStackTrace();
             }
 
             //取消搜索
@@ -259,6 +248,37 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         }
     }
 
+    /*多线程
+    class connectTask extends Thread{
+        private BluetoothDevice mmDevice;
+        public connectTask (BluetoothDevice device){
+            BluetoothSocket tmp = null;
+            mmDevice = device;
+            try {
+                tmp = device.createRfcommSocketToServiceRecord(MY_UUID);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            btSocket = tmp;
+        }
+        @Override
+        public void run() {
+            mBluetoothAdapter.cancelDiscovery();
+            try {
+                Log.e("test","connect sucess");
+                btSocket.connect();
+                Log.e("test","connect sucess11");
+            } catch (IOException connectException) {
+                try{
+                 btSocket.close();
+                }catch (IOException closeException)
+                {
+                }
+                return;
+            }
+        }
+    }
+    */
     @Override
     protected void onDestroy() {
         super.onDestroy();
