@@ -79,6 +79,7 @@
         android:orientation="horizontal"
        >
 
+
         <CheckBox
             android:id="@+id/paswd"
             android:layout_width="wrap_content"
@@ -86,6 +87,12 @@
             android:text="IP保存"
             android:gravity="center"
             android:textColor="#000000"/>
+
+        <Button
+            android:id="@+id/udpserv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UDPS"/>
 
         <Button
             android:id="@+id/connet"

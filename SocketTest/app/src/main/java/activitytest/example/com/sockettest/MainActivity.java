@@ -20,8 +20,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -33,9 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private EditText edt_ip, edt_port, edt_getMsg;//IP port 发送输入控件
-    private Button bt_connect, bt_close, bt_send, bt_show, showdata, ctlbtn;//连接、断开、发送按钮
+    private Button bt_connect, bt_close, bt_send, bt_show, showdata, ctlbtn,udpserv;//连接、断开、发送按钮、UDP
     private TextView text_show;//显示TextView
     private CheckBox paswd_check;
+
 
 
     private int port, connect_flag = 0;//连接成功标志位
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String localip;//获取本地IP
 
     private Socket socket = null;
+    public DatagramSocket udpsocket = null;
 
     private PrintWriter pw;//send
     private String sendMsg, recvMsg;//获取发送的信息
@@ -90,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 running = false;
                 try {
                     socket.close();
+                    udpsocket.close();
                 }
                 catch (Exception e) {
                     e.printStackTrace();
@@ -106,6 +112,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent test = new Intent(MainActivity.this, ShowDataActivity.class);
                 startActivity(test);
                 break;
+            case R.id.udpserv:
+                new UdpServConnect().start();
+                break;
             default:
                 break;
         }
@@ -114,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * 用来处理获取输入框里的内容
      */
-    private void get_ip_port() {
+    public void get_ip_port() {
         //获取端口号
         String str = edt_port.getText().toString();
         try {
@@ -141,15 +150,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_send = (Button) findViewById(R.id.sendButton);//获取发送
         showdata = (Button)findViewById(R.id.showdata);//显示网页温度
         ctlbtn = (Button)findViewById(R.id.conctrl);//显示网页温度
-        paswd_check = (CheckBox)findViewById(paswd);
-
-
+        paswd_check = (CheckBox)findViewById(paswd);//保存密码
+        udpserv = (Button)findViewById(R.id.udpserv);//udpserv
 
         bt_connect.setOnClickListener(this);
         bt_close.setOnClickListener(this);
         bt_send.setOnClickListener(this);
         showdata.setOnClickListener(this);
         ctlbtn.setOnClickListener(this);
+        udpserv.setOnClickListener(this);
     }
 
     /**
@@ -216,6 +225,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * UDPSERV服务端
+     */
+    public class UdpServConnect extends Thread
+    {
+        @Override
+        public void run() {
+            get_ip_port();//获取输入的IP、端口号
+            try {
+                //1创建服务器端
+                udpsocket = new DatagramSocket(port);
+                //2创建数据报 用于接收客户端数据
+                byte data[] = new byte[1024];
+                DatagramPacket packet = new DatagramPacket(data, data.length);
+                //3接收客户端发送的数据
+                while(true)
+                {
+                    udpsocket.receive(packet);
+                    String udprevcMsg = new String(data, 0, packet.getLength());
+                    //4更新到界面显示
+                    Message udprecv = myHandler.obtainMessage();
+                    udprecv.what = 3;
+                    udprecv.obj = udprevcMsg;
+                    myHandler.sendMessage(udprecv);
+                    Log.d("udp","123455");
+                }
+            } catch (SocketException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     /**
      * 连接服务器
      * @throws IOException
@@ -325,6 +367,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                    toastShow(time+":已断开连接");
                    text_show.setText(time+":服务器已断开连接");
                    setButtonFlag(false,bt_connect);
+                   break;
+               case 3://udp
+                   getTime();
+                   String strudp = (String) msg.obj;
+                   toastShow(time+":UDP服务器开启");
+                   text_show.setText(time + ":" + strudp);
                    break;
                default:
                    break;
